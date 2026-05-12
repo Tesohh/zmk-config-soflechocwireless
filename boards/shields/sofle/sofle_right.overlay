@@ -25,6 +25,13 @@
     status = "okay";
 };
 
+/ {
+    tps43_input: tps43_input {
+        compatible = "zmk,input-listener";
+        device = <&tps43>;
+    };
+};
+
 &pro_micro_i2c {
     status = "okay";
     clock-frequency = <400000>;
@@ -33,8 +40,8 @@
         compatible = "azoteq,iqs5xx";
         reg = <0x74>;
 
-        reset-gpios = <&pro_micro 0 GPIO_ACTIVE_LOW>;
-        rdy-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+        rdy-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
 
         /*
          * Potentially non-exhaustive list of configuration options.
